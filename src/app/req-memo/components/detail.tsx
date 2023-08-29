@@ -1,14 +1,10 @@
+import { fetchPost } from "@/app/req-memo/fetchPost";
+
 export default async function Detail() {
-  const result = await fetch("http://localhost:9999/product.php");
-  const json = await result.json();
+  const json = await fetchPost("100");
   return (
-    <div>
-      <dl>
-        <dt>説明</dt>
-        <dd>{json.description}</dd>
-        <dt>価格</dt>
-        <dd>{json.price}</dd>
-      </dl>
+    <div className="max-w-xl">
+      <p className="mt-6">{json.content}</p>
     </div>
   );
 }

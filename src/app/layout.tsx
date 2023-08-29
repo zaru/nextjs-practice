@@ -1,5 +1,6 @@
 import "./globals.css";
 
+// MEMO: 明示的にdynamicにしておく。ローカル開発時にfetchがあってもstatic扱いになるため
 export const dynamic = "force-dynamic";
 
 export default function RootLayout({
@@ -10,8 +11,7 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body>
-        <p>Root layout</p>
-        {children}
+        <main className="mx-auto max-w-7xl px-8">{children}</main>
       </body>
     </html>
   );

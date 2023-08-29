@@ -1,9 +1,10 @@
+import { fetchPost } from "@/app/req-memo/fetchPost";
+
 export default async function Title() {
-  const result = await fetch("http://localhost:9999/product.php");
-  const json = await result.json();
+  const json = await fetchPost("100");
   return (
-    <div>
-      <h1>{json.title}</h1>
-    </div>
+    <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+      {json.title}
+    </h1>
   );
 }

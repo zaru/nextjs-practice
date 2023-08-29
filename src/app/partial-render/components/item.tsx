@@ -1,6 +1,6 @@
 "use client";
 
-import { fetchData, ItemType } from "@/app/partial-render/page";
+import { fetchData, ItemType } from "@/app/partial-render/fetchData";
 import { useRouter } from "next/navigation";
 
 type Props = {
