@@ -6,15 +6,15 @@ export default function Home() {
   const items = [
     {
       href: "/req-memo",
-      title: "fetch リクエストメモ化",
+      title: "fetchリクエストは同じであれば自動でメモ化する",
     },
     {
       href: "/layout-not-render",
-      title: "レイアウトの部分更新",
+      title: "画面遷移してもレイアウトは再描画されない",
     },
     {
-      href: "/hierarchy",
-      title: "階層",
+      href: "/hierarchy/child",
+      title: "階層レイアウトのシンプルなデモ",
     },
     {
       href: "/error-demo",
