@@ -23,7 +23,8 @@ export default function Home() {
     },
     {
       href: "/error-demo",
-      title: "エラーデモ",
+      title:
+        "コンポーネントがエラーになった際に、そこだけエラーハンドリングする",
     },
     {
       href: "/partial-render",
