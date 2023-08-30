@@ -11,12 +11,18 @@ export default function Page() {
           Memoizationによってfetchは自動でキャッシュしてくれる。fetchはNext.jsとReactで拡張されている。Request
           Memoization自体はReactの機能。ただし、まだ仕様としてFixしていないようでドキュメント化されていない。
         </p>
-        <p>
+        <p className="mt-6">
           これを見る限り批判的な意見ほとんど
           https://github.com/facebook/react/issues/25573
         </p>
-        <Title />
-        <Detail />
+        <p className="mt-6">
+          動作確認方法: npm build && npm run
+          startしてアクセス。サーバ側のアクセスログが1回しかリクエストが来ていないことを確認。
+        </p>
+        <div className="mt-6">
+          <Title />
+          <Detail />
+        </div>
       </div>
     </div>
   );
