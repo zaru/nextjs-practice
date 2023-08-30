@@ -13,6 +13,11 @@ export default function Home() {
       title: "画面遷移してもレイアウトは再描画されない",
     },
     {
+      href: "/router-refresh",
+      title:
+        "データ更新後に、画面全体ではなく差分のみ再描画してくれる router.refresh()",
+    },
+    {
       href: "/hierarchy/child",
       title: "階層レイアウトのシンプルなデモ",
     },
