@@ -1,6 +1,5 @@
 import Title from "@/app/req-memo/components/title";
 import Detail from "@/app/req-memo/components/detail";
-import Link from "next/link";
 
 export default function Page() {
   return (
