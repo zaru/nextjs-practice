@@ -17,6 +17,20 @@ async function main() {
       },
     });
   }
+
+  for (let i = 1; i <= 10; i++) {
+    await prisma.todo.upsert({
+      where: { id: i },
+      update: {
+        name: `task ${i}`,
+        isCompleted: false,
+      },
+      create: {
+        name: `task ${i}`,
+        isCompleted: false,
+      },
+    });
+  }
 }
 
 main()

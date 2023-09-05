@@ -39,6 +39,14 @@ export default function Home() {
       href: "/loading-demo/streaming",
       title: "ストリーミング",
     },
+    {
+      href: "/prisma_crud/api",
+      title: "Prisma CRUD デモ（通常API版）",
+    },
+    {
+      href: "/prisma_crud/server_actions",
+      title: "Prisma CRUD デモ（Server Actions版）",
+    },
   ];
   return (
     <List>
