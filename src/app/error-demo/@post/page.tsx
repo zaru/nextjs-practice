@@ -7,5 +7,11 @@ export default async function Page() {
   // MEMO: 必ずJSON取得失敗するAPI
   const result = await fetch(url[Math.floor(Math.random() * url.length)]);
   const json = await result.json();
-  return <p>{json.title}</p>;
+  return (
+    <div className="bg-sky-50 p-2">
+      <p className="mt-6 text-sky-600 first:mt-0">
+        コンポーネント実行に成功した : {json.title}
+      </p>
+    </div>
+  );
 }
