@@ -13,6 +13,18 @@ export default function DeleteButton({ id }: { id: number }) {
     ref.current?.close();
   }
 
+  async function onDelete(formData: FormData) {
+    const result = await deleteTask(formData);
+
+    if (result.result === "success") {
+      alert("削除しました");
+    } else {
+      alert("削除に失敗しました");
+    }
+
+    close();
+  }
+
   return (
     <>
       <button className="border p-2 text-sm" onClick={() => open()}>
@@ -28,7 +40,7 @@ export default function DeleteButton({ id }: { id: number }) {
           <button className="border p-2 text-sm" onClick={() => close()}>
             close
           </button>
-          <form action={deleteTask}>
+          <form action={onDelete}>
             <input type="hidden" name="id" value={id} />
             <button className="border p-2 text-sm">yes</button>
           </form>

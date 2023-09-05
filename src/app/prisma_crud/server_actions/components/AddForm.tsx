@@ -7,7 +7,14 @@ import AddSubmit from "@/app/prisma_crud/server_actions/components/AddSubmit";
 export default function AddForm() {
   const inputRef = useRef<HTMLInputElement>(null);
   async function handleSubmit(data: FormData) {
-    await addTask(data);
+    const result = await addTask(data);
+
+    if (result.result === "success") {
+      alert("追加しました");
+    } else {
+      alert("追加に失敗しました");
+    }
+
     if (inputRef.current) {
       inputRef.current.value = "";
     }
