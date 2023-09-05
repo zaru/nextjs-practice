@@ -15,7 +15,7 @@ export default function ToggleCompleteCheckbox({
     // startTransition を使うことで ServerActions が終わるまでチェックボックスを disabled にできる
     startTransition(async () => {
       const result = await toggleCompleted(id, event.currentTarget.checked);
-      if (result.result === "success") {
+      if (result.success) {
         alert("更新しました");
       } else {
         alert("更新に失敗しました");

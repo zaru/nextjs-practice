@@ -16,7 +16,7 @@ export default function DeleteButton({ id }: { id: number }) {
   async function onDelete(formData: FormData) {
     const result = await deleteTask(formData);
 
-    if (result.result === "success") {
+    if (result.success) {
       alert("削除しました");
     } else {
       alert("削除に失敗しました");

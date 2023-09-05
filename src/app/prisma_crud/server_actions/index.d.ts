@@ -1,4 +1,4 @@
 export type ResultType = {
-  result: "success" | "fail";
+  success: boolean;
   message?: string;
 };

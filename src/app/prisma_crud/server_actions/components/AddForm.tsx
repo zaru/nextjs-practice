@@ -9,7 +9,7 @@ export default function AddForm() {
   async function handleSubmit(data: FormData) {
     const result = await addTask(data);
 
-    if (result.result === "success") {
+    if (result.success) {
       alert("追加しました");
     } else {
       alert("追加に失敗しました");

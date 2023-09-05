@@ -14,8 +14,8 @@ export async function deleteTask(data: FormData): Promise<ResultType> {
       },
     });
     revalidatePath("/prisma_crud/server_actions");
-    return { result: "success" };
+    return { success: true };
   } catch (e) {
-    return { result: "fail" };
+    return { success: false };
   }
 }
