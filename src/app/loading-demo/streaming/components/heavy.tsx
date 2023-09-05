@@ -1,10 +1,11 @@
 export default async function Heavy() {
-  const result = await fetch("http://127.0.0.1:9999/?sleep=4");
+  const result = await fetch(
+    "https://run.mocky.io/v3/18660897-8009-47d0-88e5-b3253dd85457?mocky-delay=4000ms",
+  );
   const json = await result.json();
   return (
     <div>
-      <p>Heavy component</p>
-      <p>Output: {json.message} </p>
+      <p>Output: {json.title} </p>
     </div>
   );
 }
