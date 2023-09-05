@@ -1,9 +1,6 @@
 "use client";
-import {
-  completedTodo,
-  uncompletedTodo,
-} from "@/app/prisma_crud/server_actions/actions";
 import { useTransition } from "react";
+import { toggleCompleted } from "@/app/prisma_crud/server_actions/actions/toggleCompleted";
 
 export default function ToggleCompleteCheckbox({
   id,
@@ -17,11 +14,7 @@ export default function ToggleCompleteCheckbox({
   async function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     // startTransition を使うことで ServerActions が終わるまでチェックボックスを disabled にできる
     startTransition(async () => {
-      if (event.currentTarget.checked) {
-        await completedTodo(id);
-      } else {
-        await uncompletedTodo(id);
-      }
+      await toggleCompleted(id, event.currentTarget.checked);
     });
   }
 

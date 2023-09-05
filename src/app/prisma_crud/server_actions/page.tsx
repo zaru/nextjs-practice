@@ -1,5 +1,5 @@
-import TodoList from "@/app/prisma_crud/server_actions/components/todo-list";
-import AddForm from "@/app/prisma_crud/server_actions/components/add-form";
+import TodoList from "@/app/prisma_crud/server_actions/components/TodoList";
+import AddForm from "@/app/prisma_crud/server_actions/components/AddForm";
 import { SearchParams } from "@/app/type";
 import { prisma } from "@/lib/db/prisma";
 

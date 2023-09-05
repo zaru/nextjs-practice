@@ -1,13 +1,13 @@
 "use client";
 
-import { addTodo } from "@/app/prisma_crud/server_actions/actions";
+import { addTask } from "@/app/prisma_crud/server_actions/actions/addTask";
 import { useRef } from "react";
-import AddSubmit from "@/app/prisma_crud/server_actions/components/add-submit";
+import AddSubmit from "@/app/prisma_crud/server_actions/components/AddSubmit";
 
 export default function AddForm() {
   const inputRef = useRef<HTMLInputElement>(null);
   async function handleSubmit(data: FormData) {
-    await addTodo(data);
+    await addTask(data);
     if (inputRef.current) {
       inputRef.current.value = "";
     }

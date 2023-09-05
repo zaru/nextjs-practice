@@ -1,10 +1,10 @@
 import { prisma } from "@/lib/db/prisma";
-import DeleteButton from "@/app/prisma_crud/server_actions/components/delete-button";
-import ToggleCompleteCheckbox from "@/app/prisma_crud/server_actions/components/toggle-complete-checkbox";
-import OrderSwitcher from "@/app/prisma_crud/server_actions/components/order-switcher";
+import DeleteButton from "@/app/prisma_crud/server_actions/components/DeleteButton";
+import ToggleCompleteCheckbox from "@/app/prisma_crud/server_actions/components/ToggleCompleteCheckbox";
+import OrderSwitcher from "@/app/prisma_crud/server_actions/components/OrderSwitcher";
 import { SearchParams } from "@/app/type";
 import { getOrderBy, getPage } from "@/lib/db/utils";
-import Pagination from "@/app/prisma_crud/server_actions/components/pagination";
+import Pagination from "@/app/prisma_crud/server_actions/components/Pagination";
 
 const TAKE = 5;
 

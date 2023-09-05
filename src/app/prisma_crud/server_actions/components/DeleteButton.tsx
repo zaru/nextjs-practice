@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { deleteTodo } from "@/app/prisma_crud/server_actions/actions";
+import { deleteTask } from "@/app/prisma_crud/server_actions/actions/deleteTask";
 
 export default function DeleteButton({ id }: { id: number }) {
   const ref = useRef<HTMLDialogElement>(null);
@@ -28,7 +28,7 @@ export default function DeleteButton({ id }: { id: number }) {
           <button className="border p-2 text-sm" onClick={() => close()}>
             close
           </button>
-          <form action={deleteTodo}>
+          <form action={deleteTask}>
             <input type="hidden" name="id" value={id} />
             <button className="border p-2 text-sm">yes</button>
           </form>
