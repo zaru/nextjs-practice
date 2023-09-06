@@ -51,6 +51,10 @@ export default function Home() {
       href: "/toaster",
       title: "Toaster（GlobalState版）",
     },
+    {
+      href: "/toaster-context",
+      title: "Toaster（Context版）",
+    },
   ];
   return (
     <List>
