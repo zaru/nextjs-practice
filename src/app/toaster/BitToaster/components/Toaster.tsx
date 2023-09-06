@@ -1,7 +1,7 @@
-import { useGlobalState } from "@/app/toaster/BitToaster/hooks/useGlobalState";
+import { useToaster } from "@/app/toaster/BitToaster/hooks/useToaster";
 
 export function Toaster() {
-  const { state } = useGlobalState();
+  const { state } = useToaster();
   return (
     <div
       className={`fixed left-0 right-0 z-10 mx-auto w-96 rounded border bg-gray-50 shadow transition-all ease-in ${
