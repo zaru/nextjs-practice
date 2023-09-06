@@ -18,8 +18,10 @@ export const useGlobalState = () => {
       setState(globalState);
     };
     listeners.add(listener);
-    listener(); // in case it's already changed
-    return () => listeners.delete(listener); // cleanup
+    listener();
+    return () => {
+      listeners.delete(listener);
+    };
   }, []);
 
   const setGlobalState = (nextGlobalState: GlobalStateType) => {
