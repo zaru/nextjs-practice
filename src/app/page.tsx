@@ -47,6 +47,10 @@ export default function Home() {
       href: "/prisma_crud/server_actions",
       title: "Prisma CRUD デモ（Server Actions版）",
     },
+    {
+      href: "/toaster",
+      title: "Toaster（GlobalState版）",
+    },
   ];
   return (
     <List>
