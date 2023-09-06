@@ -1,4 +1,5 @@
 import "./globals.css";
+import RootToaster from "@/app/components/RootToaster";
 
 // MEMO: 明示的にdynamicにしておく。ローカル開発時にfetchがあってもstatic扱いになるため
 export const dynamic = "force-dynamic";
@@ -11,6 +12,7 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body>
+        <RootToaster />
         <main className="mx-auto max-w-7xl px-8">{children}</main>
       </body>
     </html>
