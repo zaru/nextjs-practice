@@ -1,7 +1,6 @@
 "use client";
 
-import { Toaster } from "@/app/toaster/BitToaster";
-import { useToaster } from "@/app/toaster/BitToaster/hooks/useToaster";
+import { Toaster, useToaster } from "@/app/toaster/BitToaster";
 
 export default function Page() {
   const { toast } = useToaster();
