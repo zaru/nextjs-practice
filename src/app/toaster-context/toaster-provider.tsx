@@ -24,7 +24,11 @@ export default function ToasterProvider({
   return (
     <ToasterContext.Provider value={toast}>
       {children}
-      {createPortal(<Toaster show={show}>{message}</Toaster>, document.body)}
+      {typeof window === "object" ? (
+        createPortal(<Toaster show={show}>{message}</Toaster>, document.body)
+      ) : (
+        <Toaster show={show}>{message}</Toaster>
+      )}
     </ToasterContext.Provider>
   );
 }
