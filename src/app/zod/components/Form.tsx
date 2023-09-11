@@ -31,7 +31,9 @@ export function Form() {
 
   async function onSubmit(formData: FormData) {
     const response = await postAction(formData);
-    console.log(response);
+    if (!response.success) {
+      alert(JSON.stringify(response.message));
+    }
   }
 
   return (
