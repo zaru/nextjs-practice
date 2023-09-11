@@ -50,6 +50,10 @@ export default function Home() {
       href: "/toaster-context",
       title: "Toaster（Context版）",
     },
+    {
+      href: "/zod",
+      title: "Zod + Server Actionsのバリデーションデモ",
+    },
   ];
   return (
     <List>
