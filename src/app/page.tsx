@@ -27,21 +27,16 @@ export default function Home() {
         "コンポーネントがエラーになった際に、そこだけエラーハンドリングする",
     },
     {
-      href: "/partial-render",
-      title:
-        "一覧で部分更新した際に、描画も変更するやつ（HotwireのTurboStreamsみたいなやつ）",
-    },
-    {
       href: "/loading-demo",
-      title: "ローディング",
+      title: "loading.tsxを使ったローディング",
     },
     {
       href: "/loading-demo/streaming",
-      title: "ストリーミング",
+      title: "<Suspense>を使ったストリーミング",
     },
     {
       href: "/prisma_crud/api",
-      title: "Prisma CRUD デモ（通常API版）",
+      title: "[未実装] Prisma CRUD デモ（通常API版）",
     },
     {
       href: "/prisma_crud/server_actions",
