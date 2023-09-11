@@ -8,5 +8,6 @@ export async function postAction(formData: FormData) {
   });
   return {
     success: result.success,
+    message: result.success ? "OK" : result.error?.format(),
   };
 }

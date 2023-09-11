@@ -8,10 +8,24 @@ export function Form() {
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
 
+  const handleInputEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+    // 失敗は早期に通知しないが、成功は早期に解消する
+    const result = schema.safeParse({ email: e.target.value });
+    if (result.success) {
+      setEmailError("");
+    }
+  };
+
   const handleBlurEmail = (e: React.FocusEvent<HTMLInputElement>) => {
     const result = schema.safeParse({ email: e.target.value });
     if (!result.success) {
-      setEmailError(result.error.issues[0].message);
+      const error = result.error.format();
+      if (error.email) {
+        setEmailError(error.email._errors.join("/"));
+      }
+    } else {
+      setEmailError("");
     }
   };
 
