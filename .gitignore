@@ -36,3 +36,5 @@ next-env.d.ts
 
 *.sqlite3
 prisma/*.db
+
+.env
