@@ -1,5 +1,6 @@
 import FileUploader from "@/app/server-actions-file-upload/components/FileUploader";
 import FileDownloader from "@/app/server-actions-file-upload/components/FileDownloader";
+import FileList from "@/app/server-actions-file-upload/components/FileList";
 
 export default function Page() {
   return (
@@ -13,7 +14,7 @@ export default function Page() {
       </p>
       <div className="mt-6">
         <FileUploader />
-        <FileDownloader />
+        <FileList />
       </div>
     </div>
   );

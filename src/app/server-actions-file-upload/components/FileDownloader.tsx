@@ -2,9 +2,13 @@
 
 import { signedUrl } from "@/app/server-actions-file-upload/actions/signedUrl";
 
-export default function FileDownloader() {
+type Props = {
+  gcsPath: string;
+  name: string;
+};
+export default function FileDownloader(props: Props) {
   const handleClick = async () => {
-    const result = await signedUrl();
+    const result = await signedUrl(props.name, props.gcsPath);
     console.log(result);
     if (result.success) {
       window.open(result.url, "_blank");
@@ -13,7 +17,11 @@ export default function FileDownloader() {
 
   return (
     <div>
-      <button type="button" onClick={handleClick}>
+      <button
+        type="button"
+        onClick={handleClick}
+        className="rounded border p-2"
+      >
         download
       </button>
     </div>

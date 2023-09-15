@@ -2,8 +2,7 @@
 
 import { GetSignedUrlConfig, Storage } from "@google-cloud/storage";
 
-export async function signedUrl() {
-  console.log(process.env.GCS_BUCKET_NAME);
+export async function signedUrl(name: string, path: string) {
   if (
     process.env.GCS_PRIVATE_KEY &&
     process.env.GCS_CLIENT_EMAIL &&
@@ -22,11 +21,12 @@ export async function signedUrl() {
       version: "v4",
       action: "read",
       expires: Date.now() + 15 * 60 * 1000,
+      responseDisposition: `attachment; filename="${name}"`,
     };
 
     const [url] = await storage
       .bucket(process.env.GCS_BUCKET_NAME)
-      .file("b_npm.gif")
+      .file(path)
       .getSignedUrl(options);
     return {
       success: true,

@@ -22,3 +22,11 @@ model Todo {
   name        String
   isCompleted Boolean @default(false)
 }
+
+model Attachement {
+  id        Int    @id @default(autoincrement())
+  name      String
+  gcs_path  String
+  size      Int
+  mime_type String
+}

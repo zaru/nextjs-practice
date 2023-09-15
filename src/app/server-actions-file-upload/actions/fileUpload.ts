@@ -1,6 +1,11 @@
 "use server";
 
 import { Storage } from "@google-cloud/storage";
+import { prisma } from "@/lib/db/prisma";
+
+function createPath() {
+  return crypto.randomUUID();
+}
 
 export async function FileUpload(formData: FormData) {
   const file = formData.get("file") as File;
@@ -22,9 +27,19 @@ export async function FileUpload(formData: FormData) {
         },
       });
 
+      const fileData = {
+        name: file.name,
+        gcs_path: createPath(),
+        size: file.size,
+        mime_type: file.type,
+      };
+
       const bucket = storage.bucket(process.env.GCS_BUCKET_NAME);
-      const bucketFile = bucket.file(file.name);
+      const bucketFile = bucket.file(fileData.gcs_path);
       await bucketFile.save(buffer);
+      await prisma.attachement.create({
+        data: fileData,
+      });
     }
   }
 }
