@@ -8,7 +8,11 @@ export async function FileUpload(formData: FormData) {
     const data = await file.arrayBuffer();
     const buffer = Buffer.from(data);
 
-    if (process.env.GCS_PRIVATE_KEY && process.env.GCS_CLIENT_EMAIL) {
+    if (
+      process.env.GCS_PRIVATE_KEY &&
+      process.env.GCS_CLIENT_EMAIL &&
+      process.env.GCS_BUCKET_NAME
+    ) {
       const storage = new Storage({
         credentials: {
           private_key: process.env.GCS_PRIVATE_KEY.split(String.raw`\n`).join(
@@ -18,7 +22,7 @@ export async function FileUpload(formData: FormData) {
         },
       });
 
-      const bucket = storage.bucket("hrmap-zaru-local");
+      const bucket = storage.bucket(process.env.GCS_BUCKET_NAME);
       const bucketFile = bucket.file(file.name);
       await bucketFile.save(buffer);
     }
