@@ -54,6 +54,11 @@ export default function Home() {
       href: "/zod",
       title: "Zod + Server Actionsのバリデーションデモ",
     },
+    {
+      href: "/server-actions-file-upload",
+      title:
+        "Server Actions + GCP Storageファイルアップロード・ダウンロードデモ",
+    },
   ];
   return (
     <List>
