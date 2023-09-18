@@ -3,6 +3,7 @@ import Detail from "@/app/req-memo/components/detail";
 import { SectionHeader } from "@/app/components/SectionHeader";
 import { SectionBody } from "@/app/components/SectionBody";
 import Section from "@/app/components/Section";
+import SectionArticle from "@/app/components/SectionArticle";
 
 export default function Page() {
   return (
@@ -15,7 +16,7 @@ export default function Page() {
             <Detail />
           </div>
         </div>
-        <section className="prose prose-slate mt-12">
+        <SectionArticle>
           <h2>仕様</h2>
           <ul>
             <li>
@@ -60,7 +61,7 @@ export default function Page() {
               サーバ側のアクセスログが1回しかリクエストが来ていないことを確認
             </li>
           </ul>
-        </section>
+        </SectionArticle>
       </SectionBody>
     </Section>
   );

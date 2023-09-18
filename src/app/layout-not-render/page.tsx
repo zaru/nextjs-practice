@@ -1,20 +1,27 @@
 import Link from "next/link";
+import { SectionHeader } from "@/app/components/SectionHeader";
+import Section from "@/app/components/Section";
+import { SectionBody } from "@/app/components/SectionBody";
+import SectionArticle from "@/app/components/SectionArticle";
 
 export default function Page() {
   return (
-    <div className="mt-4">
-      <p className="mt-6">
-        レイアウト（layout.tsx）は画面遷移時にも再描画されないデモ。スライドアニメーションはレイアウトに存在している。画面遷移をしてもアニメーションは止まらない。
-      </p>
-      <p className="mt-6">
-        <Link
-          href={"/layout-not-render/other"}
-          className="text-sky-600"
-          prefetch={true}
-        >
-          他のページへ
-        </Link>
-      </p>
-    </div>
+    <Section>
+      <SectionHeader>
+        レイアウト（layout.tsx）は画面遷移時にも再描画されないデモ
+      </SectionHeader>
+      <SectionBody>
+        <SectionArticle>
+          <p>
+            スライドアニメーションはレイアウトに存在している。画面遷移をしてもアニメーションは止まらない。
+          </p>
+          <p>
+            <Link href={"/layout-not-render/other"} prefetch={true}>
+              他のページへ
+            </Link>
+          </p>
+        </SectionArticle>
+      </SectionBody>
+    </Section>
   );
 }
