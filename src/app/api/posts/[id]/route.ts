@@ -9,8 +9,8 @@ export async function GET(
   const random = Math.random();
   const post = {
     id: id,
-    title: `title_${random}`,
-    content: `content_${random} lorem ipsum dolor sit amet consectetur adipiscing elit. lorem ipsum dolor sit amet consectetur adipiscing elit`,
+    title: `タイトル : ランダム数値（${random}）`,
+    content: `コンテンツ : ランダム数値（${random}）`,
   };
   return NextResponse.json(post);
 }
