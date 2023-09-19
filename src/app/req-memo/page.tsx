@@ -1,7 +1,7 @@
 import Title from "@/app/req-memo/components/title";
 import Detail from "@/app/req-memo/components/detail";
-import { SectionHeader } from "@/app/components/SectionHeader";
-import { SectionBody } from "@/app/components/SectionBody";
+import SectionHeader from "@/app/components/SectionHeader";
+import SectionBody from "@/app/components/SectionBody";
 import Section from "@/app/components/Section";
 import SectionArticle from "@/app/components/SectionArticle";
 

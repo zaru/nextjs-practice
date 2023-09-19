@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { SectionHeader } from "@/app/components/SectionHeader";
-import { SectionBody } from "@/app/components/SectionBody";
+import SectionHeader from "@/app/components/SectionHeader";
+import SectionBody from "@/app/components/SectionBody";
 import SectionArticle from "@/app/components/SectionArticle";
 import Section from "@/app/components/Section";
 

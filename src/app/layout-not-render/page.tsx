@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { SectionHeader } from "@/app/components/SectionHeader";
+import SectionHeader from "@/app/components/SectionHeader";
 import Section from "@/app/components/Section";
-import { SectionBody } from "@/app/components/SectionBody";
+import SectionBody from "@/app/components/SectionBody";
 import SectionArticle from "@/app/components/SectionArticle";
 
 export default function Page() {
