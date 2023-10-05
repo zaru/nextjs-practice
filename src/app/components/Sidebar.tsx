@@ -63,6 +63,10 @@ const items = [
     href: "/form-handle/use-form-xxx",
     title: "フォーム実装 - useFormState / useFormStatusパターン",
   },
+  {
+    href: "/server-component",
+    title: "Client Componentの中からServer Component",
+  },
 ];
 export default function Sidebar() {
   return (
