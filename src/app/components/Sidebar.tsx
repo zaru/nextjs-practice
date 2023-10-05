@@ -67,6 +67,10 @@ const items = [
     href: "/server-component",
     title: "Client Componentの中からServer Component",
   },
+  {
+    href: "/deep-nested/props",
+    title: "ネストが深いコンポーネントの末端にデータを渡す方法 - propsパターン",
+  },
 ];
 export default function Sidebar() {
   return (
