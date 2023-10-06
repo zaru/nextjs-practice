@@ -8,22 +8,26 @@ export default function Page() {
   return (
     <Section>
       <SectionHeader>
-        ネストが深いコンポーネントの末端にデータを渡す方法 - 端でfetchパターン
+        ネストが深いコンポーネントの末端にデータを渡す方法 -
+        Interceptingパターン
       </SectionHeader>
       <SectionBody>
         <SectionArticle>
           <h2>このパターンの感想</h2>
           <ul>
-            <li>データが必要なコンポーネント自身でfetchする</li>
-            <li>複数同一コンポーネントがある場合はN+1でfetchする</li>
             <li>
-              Server Component内部でのfetchではないので、とりまとめはされない
+              モーダルのフォームを別ページで用意しInterceptingとParallel
+              Routesでモーダル表示
             </li>
             <li>
-              Route Handlers内部ではキャッシュを効かせられる（用途によるが）
+              本来フォームは独立したページであるという概念にすることで、汎用性と疎結合を実現する
             </li>
             <li>
-              Clientでfetchしているので、当然エンドユーザ側にはリクエストは露出している
+              深い位置に設置されたコンポーネントを物理的に切り出せるので良い
+            </li>
+            <li>
+              唯一の懸念はInterceptingとParallel
+              Routesのルールが癖があるというところ
             </li>
           </ul>
         </SectionArticle>
