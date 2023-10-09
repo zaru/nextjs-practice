@@ -71,6 +71,10 @@ const items = [
     href: "/deep-nested/props",
     title: "ネストが深いコンポーネントの末端にデータを渡す方法 - propsパターン",
   },
+  {
+    href: "/parallel",
+    title: "Parallel Routes",
+  },
 ];
 export default function Sidebar() {
   return (
