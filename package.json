@@ -39,6 +39,7 @@
     "zod-i18n-map": "^2.19.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.39.0",
     "prettier": "^3.0.3",
     "prettier-plugin-tailwindcss": "^0.5.5",
     "prisma": "^5.4.1"
