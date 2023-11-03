@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function Page() {
   return (
     <Section>
-      <SectionHeader>Parallel Routesデモ</SectionHeader>
+      <SectionHeader>{Date.now()} Parallel Routesデモ</SectionHeader>
       <SectionBody>
         <SectionArticle>
           <ul>
@@ -41,6 +41,10 @@ export default function Page() {
                 </li>
                 <li>production buildでは問題ない</li>
               </ul>
+            </li>
+            <li>
+              ネストしたParallel Routesを開いて全部戻った後、なぜか再度Parallel
+              Routesには遷移できない状態…なぜ
             </li>
           </ul>
           <Link href="/parallel/modal">Modal</Link>
