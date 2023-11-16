@@ -13,13 +13,15 @@ export default function Page() {
   async function handleSubmit() {
     const result = await somethingAction();
     if (result.success) {
+      // ネストされたParallel Routesでrouter.back()を使うと、レンダリングエラーになる
+      // そのため少し時間を置いてから実行をしている
       setTimeout(() => {
         router.back();
       }, 250);
     }
   }
   return (
-    <div className="fixed left-0 right-0 top-10 z-10 m-auto w-1/3 border bg-white p-8 shadow">
+    <div className="fixed left-0 right-0 top-10 z-10 m-auto w-1/4 border bg-white p-8 shadow">
       <Section>
         <SectionHeader>Modal2</SectionHeader>
         <SectionBody>

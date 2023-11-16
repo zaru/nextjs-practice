@@ -3,12 +3,14 @@ import SectionHeader from "@/app/components/SectionHeader";
 import SectionBody from "@/app/components/SectionBody";
 import SectionArticle from "@/app/components/SectionArticle";
 import Link from "next/link";
+import Task from "@/app/parallel/components/Task";
 
 export default function Page() {
   return (
     <Section>
       <SectionHeader>{Date.now()} Parallel Routesデモ</SectionHeader>
       <SectionBody>
+        <Task />
         <SectionArticle>
           <ul>
             <li>他のページコンポーネントを埋め込んだり、モーダル表示できる</li>
@@ -31,23 +33,39 @@ export default function Page() {
             </li>
             <li>
               ただし、他のページに遷移する場合slotコンテンツが残り続けるという挙動がある
-            </li>
-            <li>
-              slotを空にするには@modal/page.tsxでnullを返すようにすると期待の動作になる
               <ul>
                 <li>
-                  ただし、npm run devの場合、初回アクセスだと正常にParallel
-                  Routesが起動せず、2回目以降のアクセスで機能する
+                  catchAllすれば空になるっぽい記述がドキュメントにはあるが、期待の動作にはならない
                 </li>
-                <li>production buildでは問題ない</li>
               </ul>
             </li>
             <li>
-              ネストしたParallel Routesを開いて全部戻った後、なぜか再度Parallel
-              Routesには遷移できない状態…なぜ
+              ネストしたParallel
+              RoutesでrevalidatePathを実行すると、正常に動作しない
+              <ul>
+                <li>
+                  Modalを開いて、そこからさらにModal2を開く = ネストしたParallel
+                  Routes遷移
+                </li>
+                <li>Modal2でServerActionsを実行し、revalidatePathをする</li>
+                <li>モーダルを閉じて終了したいが機能しない</li>
+              </ul>
             </li>
           </ul>
-          <Link href="/parallel/modal">Modal</Link>
+          <div className="flex gap-2">
+            <Link
+              href="/parallel/modal"
+              className="group flex gap-x-3 rounded-md bg-white p-2 text-sm font-semibold leading-6 text-gray-700 shadow hover:bg-gray-50 hover:text-indigo-600"
+            >
+              Open Modal
+            </Link>
+            <Link
+              href="/parallel/modal2"
+              className="group flex gap-x-3 rounded-md bg-white p-2 text-sm font-semibold leading-6 text-gray-700 shadow hover:bg-gray-50 hover:text-indigo-600"
+            >
+              Open Modal2
+            </Link>
+          </div>
         </SectionArticle>
       </SectionBody>
     </Section>

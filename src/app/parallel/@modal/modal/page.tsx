@@ -26,15 +26,7 @@ export default function Page() {
         <SectionBody>
           <SectionArticle>
             <div className="mt-4">
-              <p>
-                Parallel
-                Routesで呼び出したコンテンツは、通常のページ遷移の場合残り続ける仕様。
-              </p>
-              <p>
-                <a href="https://nextjs.org/docs/app/building-your-application/routing/parallel-routes#navigation">
-                  https://nextjs.org/docs/app/building-your-application/routing/parallel-routes#navigation
-                </a>
-              </p>
+              <p>通常のLinkページ遷移ではSlotがクリアされない…</p>
               <Link
                 href="/parallel"
                 className="group flex gap-x-3 rounded-md bg-white p-2 text-sm font-semibold leading-6 text-gray-700 shadow hover:bg-gray-50 hover:text-indigo-600"
@@ -43,11 +35,19 @@ export default function Page() {
               </Link>
             </div>
 
-            <form action={handleSubmit}>
+            <hr />
+
+            <form action={handleSubmit} className="mt-4">
+              <p>
+                ServerActionsで遷移して、その後router.back()すればSlotがクリアされ、モーダルが閉じる
+              </p>
               <button className="group flex gap-x-3 rounded-md bg-white p-2 text-sm font-semibold leading-6 text-gray-700 shadow hover:bg-gray-50 hover:text-indigo-600">
                 submit
               </button>
             </form>
+
+            <hr />
+
             <div className="mt-4">
               <p>
                 Parallel
@@ -61,6 +61,9 @@ export default function Page() {
                 Go to back
               </button>
             </div>
+
+            <hr />
+
             <div className="mt-4">
               <p>
                 ネストした2つ目のParallel
@@ -71,7 +74,7 @@ export default function Page() {
                 href="/parallel/modal2"
                 className="group flex gap-x-3 rounded-md bg-white p-2 text-sm font-semibold leading-6 text-gray-700 shadow hover:bg-gray-50 hover:text-indigo-600"
               >
-                Go to modal2
+                Open modal2
               </Link>
             </div>
           </SectionArticle>
