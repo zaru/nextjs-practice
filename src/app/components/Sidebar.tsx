@@ -75,6 +75,10 @@ const items = [
     href: "/parallel",
     title: "Parallel Routes",
   },
+  {
+    href: "/prevent-leave-form",
+    title: "フォーム離脱防止",
+  },
 ];
 export default function Sidebar() {
   return (
