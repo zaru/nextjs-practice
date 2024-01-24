@@ -14,7 +14,7 @@ export default function RootLayout({
     <html lang="ja" className="h-full bg-gray-50">
       <body className="h-full">
         <RootToaster />
-        <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
+        <div className="fixed inset-y-0 z-50 flex w-72 flex-col">
           <Sidebar />
         </div>
 

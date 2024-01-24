@@ -1,6 +1,6 @@
 "use client";
-import { experimental_useFormState as useFormState } from "react-dom";
-import { experimental_useFormStatus as useFormStatus } from "react-dom";
+import { useFormState } from "react-dom";
+import { useFormStatus } from "react-dom";
 import createAction from "@/app/form-handle/use-form-xxx/createAction";
 import { FormStateType } from "@/app/form-handle/use-form-xxx";
 
