@@ -37,3 +37,12 @@ export async function submitForm(
 
   return { success: true, message: "投稿成功しました" };
 }
+
+type FlattenError = z.inferFlattenedErrors<typeof schema>;
+export async function clientValidation(
+  key: string,
+  value: string,
+): Promise<FlattenError | null> {
+  const validatedFields = schema.safeParse({ [key]: value });
+  return validatedFields.success ? null : validatedFields.error.flatten();
+}
