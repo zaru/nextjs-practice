@@ -13,6 +13,7 @@ import { ErrorMessage } from "@/app/form/modern/components/ErrorMessage";
 import { SuccessMessage } from "@/app/form/modern/components/SuccessMessage";
 import { DangerMessage } from "@/app/form/modern/components/DangerMessage";
 import { useState } from "react";
+import { SubmitButton } from "@/app/form/modern/components/SubmitButton";
 
 export function Form() {
   const initialState = { success: null, message: null, errors: {} };
@@ -72,14 +73,9 @@ export function Form() {
         )}
         {errors?.text && <ErrorMessage>{errors.text}</ErrorMessage>}
       </FormField>
-
-      <button
-        disabled={errors && Object.keys(errors).length > 0}
-        type="submit"
-        className="rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 disabled:opacity-30 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-      >
-        Submit
-      </button>
+      <SubmitButton
+        clientSideInvalid={errors && Object.keys(errors).length > 0}
+      />
     </form>
   );
 }

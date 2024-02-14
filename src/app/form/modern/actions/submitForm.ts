@@ -21,7 +21,7 @@ export async function submitForm(
   formData: FormData,
 ): Promise<State> {
   // デバッグ目的でここで sleep させる
-  await new Promise((resolve) => setTimeout(resolve, 500));
+  await new Promise((resolve) => setTimeout(resolve, 1000));
 
   const validatedFields = schema.safeParse(
     Object.fromEntries(formData.entries()),
