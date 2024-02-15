@@ -5,15 +5,12 @@ import z from "@/lib/zod";
 export interface State {
   success: boolean | null;
   message: string | null;
-  errors?: {
-    email?: string[];
-    text?: string[];
-  };
+  errors?: z.inferFlattenedErrors<typeof schema>["fieldErrors"];
 }
 
 const schema = z.object({
   email: z.string().email(),
-  text: z.string().min(1).max(2),
+  text: z.string().min(1).max(2).email(),
 });
 
 export async function submitForm(
@@ -38,11 +35,13 @@ export async function submitForm(
   return { success: true, message: "投稿成功しました" };
 }
 
-type FlattenError = z.inferFlattenedErrors<typeof schema>;
 export async function clientValidation(
-  key: string,
+  key: keyof z.infer<typeof schema>,
   value: string,
-): Promise<FlattenError | null> {
-  const validatedFields = schema.safeParse({ [key]: value });
-  return validatedFields.success ? null : validatedFields.error.flatten();
+) {
+  const pickSchema = schema.pick({ [key]: true });
+  const validatedFields = pickSchema.safeParse({ [key]: value });
+  return validatedFields.success
+    ? undefined
+    : validatedFields.error.flatten().fieldErrors[key];
 }

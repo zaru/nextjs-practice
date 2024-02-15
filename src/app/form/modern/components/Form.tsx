@@ -15,9 +15,33 @@ import { SubmitButton } from "@/app/form/modern/components/SubmitButton";
 import { ResultMessage } from "@/app/form/modern/components/ResultMessage";
 
 export function Form() {
-  const initialState = { success: null, message: null, errors: {} };
+  const initialState = { success: null, message: null };
   const [state, dispatch] = useFormState(submitForm, initialState);
-  const [errors, setErrors] = useState<State["errors"]>(initialState.errors);
+  const [errors, setErrors] = useState<State["errors"]>();
+
+  const updateClientsideErrors = (
+    key: keyof NonNullable<State["errors"]>,
+    fieldErrors: string[] | undefined,
+  ) => {
+    if (fieldErrors) {
+      setErrors((errors) => {
+        return { ...errors, [key]: fieldErrors };
+      });
+    } else {
+      setErrors((errors) => {
+        if (errors && errors[key]) {
+          const { [key]: _, ...rest } = errors;
+          return rest;
+        }
+        return errors;
+      });
+    }
+  };
+
+  const handleBlur = async (e: React.FocusEvent<HTMLInputElement>) => {
+    const result = await clientValidation("text", e.target.value);
+    updateClientsideErrors("text", result);
+  };
 
   return (
     <form action={dispatch} className="mx-auto max-w-sm">
@@ -43,29 +67,16 @@ export function Form() {
           name="text"
           placeholder="some text here..."
           required
-          onBlur={async (e) => {
-            const result = await clientValidation("text", e.target.value);
-            if (result?.fieldErrors?.text) {
-              setErrors((errors) => ({
-                ...errors,
-                text: result.fieldErrors.text,
-              }));
-            } else {
-              setErrors((errors) => {
-                if (errors?.text) {
-                  const { text, ...rest } = errors;
-                  return rest;
-                }
-                return errors;
-              });
-            }
-            console.log(result);
-          }}
+          onBlur={handleBlur}
         />
-        {state?.errors?.text && (
-          <ErrorMessage>{state.errors.text}</ErrorMessage>
-        )}
-        {errors?.text && <ErrorMessage>{errors.text}</ErrorMessage>}
+        {state?.errors?.text &&
+          state.errors.text.map((error) => (
+            <ErrorMessage key={error}>{error}</ErrorMessage>
+          ))}
+        {errors?.text &&
+          errors.text.map((error) => (
+            <ErrorMessage key={error}>{error}</ErrorMessage>
+          ))}
       </FormField>
       <SubmitButton
         clientSideInvalid={errors && Object.keys(errors).length > 0}
