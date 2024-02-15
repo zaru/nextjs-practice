@@ -10,10 +10,9 @@ import {
 } from "@/app/form/modern/actions/submitForm";
 import { useFormState } from "react-dom";
 import { ErrorMessage } from "@/app/form/modern/components/ErrorMessage";
-import { SuccessMessage } from "@/app/form/modern/components/SuccessMessage";
-import { DangerMessage } from "@/app/form/modern/components/DangerMessage";
 import { useState } from "react";
 import { SubmitButton } from "@/app/form/modern/components/SubmitButton";
+import { ResultMessage } from "@/app/form/modern/components/ResultMessage";
 
 export function Form() {
   const initialState = { success: null, message: null, errors: {} };
@@ -22,12 +21,7 @@ export function Form() {
 
   return (
     <form action={dispatch} className="mx-auto max-w-sm">
-      {state.message && state.success && (
-        <SuccessMessage>{state.message}</SuccessMessage>
-      )}
-      {state.message && !state.success && (
-        <DangerMessage>{state.message}</DangerMessage>
-      )}
+      <ResultMessage message={state.message} success={state.success} />
       <FormField>
         <Label htmlFor="email">Your email</Label>
         <InputText
