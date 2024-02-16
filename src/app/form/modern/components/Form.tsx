@@ -23,19 +23,9 @@ export function Form() {
     key: keyof NonNullable<State["errors"]>,
     fieldErrors: string[] | undefined,
   ) => {
-    if (fieldErrors) {
-      setErrors((errors) => {
-        return { ...errors, [key]: fieldErrors };
-      });
-    } else {
-      setErrors((errors) => {
-        if (errors && errors[key]) {
-          const { [key]: _, ...rest } = errors;
-          return rest;
-        }
-        return errors;
-      });
-    }
+    setErrors((errors) => {
+      return { ...errors, [key]: fieldErrors };
+    });
   };
 
   const handleBlur = async (e: React.FocusEvent<HTMLInputElement>) => {
@@ -79,7 +69,9 @@ export function Form() {
           ))}
       </FormField>
       <SubmitButton
-        clientSideInvalid={errors && Object.keys(errors).length > 0}
+        clientSideInvalid={
+          errors && Object.values(errors).some((value) => value !== undefined)
+        }
       />
     </form>
   );

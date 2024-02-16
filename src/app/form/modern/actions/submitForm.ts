@@ -10,7 +10,7 @@ export interface State {
 
 const schema = z.object({
   email: z.string().email(),
-  text: z.string().min(1).max(2).email(),
+  text: z.string().min(1).max(2),
 });
 
 export async function submitForm(
