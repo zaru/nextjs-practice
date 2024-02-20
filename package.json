@@ -13,6 +13,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@bugpilot/plugin-nextjs": "^0.19.1",
+    "@bugpilot/react-error-pages": "^1.19.0",
     "@google-cloud/storage": "^7.7.0",
     "@heroicons/react": "^2.1.1",
     "@prisma/client": "^5.9.1",

@@ -1,10 +1,12 @@
+const {
+  withBugpilot
+} = require("@bugpilot/plugin-nextjs");
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   logging: {
     fetches: {
-      fullUrl: true,
-    },
-  },
+      fullUrl: true
+    }
+  }
 };
-
-module.exports = nextConfig;
+module.exports = withBugpilot(nextConfig, require("./bugpilot.config.js"));
