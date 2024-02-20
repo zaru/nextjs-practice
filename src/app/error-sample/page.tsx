@@ -7,7 +7,7 @@ export default function Page() {
     <div>
       page
       <div>
-        <ServerError />
+        {/*<ServerError />*/}
         <ClientError />
         <form action={errorSubmit}>
           <button type="submit">submit</button>
