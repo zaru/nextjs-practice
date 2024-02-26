@@ -13,8 +13,13 @@ import { ErrorMessage } from "@/app/form/modern/components/ErrorMessage";
 import { useState } from "react";
 import { SubmitButton } from "@/app/form/modern/components/SubmitButton";
 import { ResultMessage } from "@/app/form/modern/components/ResultMessage";
+import { User } from "@/app/form/modern/page";
 
-export function Form() {
+interface Props {
+  user?: User;
+}
+
+export function Form(props: Props) {
   const initialState = { success: null, message: null };
   const [state, dispatch] = useFormState(submitForm, initialState);
   const [errors, setErrors] = useState<State["errors"]>();
@@ -43,6 +48,7 @@ export function Form() {
           id="email"
           name="email"
           placeholder="name@flowbite.com"
+          defaultValue={props.user?.email}
           required
         />
         {state?.errors?.email && (
@@ -56,6 +62,7 @@ export function Form() {
           id="text"
           name="text"
           placeholder="some text here..."
+          defaultValue={props.user?.name}
           required
           onBlur={handleBlur}
         />
