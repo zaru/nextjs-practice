@@ -10,13 +10,21 @@ import {
 } from "@/app/form/modern/actions/submitForm";
 import { useFormState } from "react-dom";
 import { ErrorMessage } from "@/app/form/modern/components/ErrorMessage";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { SubmitButton } from "@/app/form/modern/components/SubmitButton";
 import { ResultMessage } from "@/app/form/modern/components/ResultMessage";
 
 export function Form() {
+  const formRef = useRef<HTMLFormElement>(null);
   const initialState = { success: null, message: null };
-  const [state, dispatch] = useFormState(submitForm, initialState);
+  const handleSubmit = async (prevState: State, formData: FormData) => {
+    const result = await submitForm(prevState, formData);
+    if (result.success) {
+      formRef.current?.reset();
+    }
+    return result;
+  };
+  const [state, dispatch] = useFormState(handleSubmit, initialState);
   const [errors, setErrors] = useState<State["errors"]>();
 
   const updateClientsideErrors = (
@@ -34,7 +42,7 @@ export function Form() {
   };
 
   return (
-    <form action={dispatch} className="mx-auto max-w-sm">
+    <form action={dispatch} className="mx-auto max-w-sm" ref={formRef}>
       <ResultMessage message={state.message} success={state.success} />
       <FormField>
         <Label htmlFor="email">Your email</Label>
