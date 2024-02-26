@@ -1,6 +1,7 @@
 import { useFormStatus } from "react-dom";
 
-interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface Props
+  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "className"> {
   clientSideInvalid?: boolean;
 }
 

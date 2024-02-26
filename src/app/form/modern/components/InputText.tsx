@@ -1,4 +1,5 @@
-interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
+interface Props
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "className"> {
   type: "text" | "email";
 }
 

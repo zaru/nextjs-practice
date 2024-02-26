@@ -1,4 +1,5 @@
-interface Props extends React.HTMLAttributes<HTMLDivElement> {}
+interface Props
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, "className"> {}
 
 export function FormField(props: Props) {
   return (

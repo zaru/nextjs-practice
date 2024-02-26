@@ -1,5 +1,5 @@
-interface Props extends React.LabelHTMLAttributes<HTMLLabelElement> {}
-
+interface Props
+  extends Omit<React.LabelHTMLAttributes<HTMLLabelElement>, "className"> {}
 export function Label(props: Props) {
   return (
     <label

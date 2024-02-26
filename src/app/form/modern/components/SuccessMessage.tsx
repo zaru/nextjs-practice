@@ -1,4 +1,6 @@
-interface Props extends React.HTMLAttributes<HTMLDivElement> {}
+interface Props {
+  children: React.ReactNode;
+}
 
 export function SuccessMessage(props: Props) {
   return (
