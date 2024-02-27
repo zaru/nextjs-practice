@@ -1,3 +1,5 @@
+import Page from "./page";
+
 export default function Default() {
-  return null;
+  return <Page />;
 }
