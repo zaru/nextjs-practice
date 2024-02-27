@@ -2,8 +2,16 @@ import { prisma } from "@/lib/db/prisma";
 import { Todo } from "@prisma/client";
 import Link from "next/link";
 
-export async function TodoList() {
-  const todos = await prisma.todo.findMany({ orderBy: { id: "desc" } });
+interface Props {
+  page: number;
+}
+
+export async function TodoList(props: Props) {
+  const todos = await prisma.todo.findMany({
+    orderBy: { id: "desc" },
+    take: 5,
+    skip: (props.page - 1) * 5,
+  });
   if (todos.length < 1) return <div>noting...</div>;
 
   return (
