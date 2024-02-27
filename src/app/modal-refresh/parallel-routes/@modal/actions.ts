@@ -14,3 +14,14 @@ export async function addItem() {
   revalidatePath("/modal-refresh/parallel-routes");
   return { success: true };
 }
+
+export async function deleteItem(id: number) {
+  const result = await prisma.todo.delete({
+    where: {
+      id: id,
+    },
+  });
+  console.log(result);
+  revalidatePath("/modal-refresh/parallel-routes");
+  return { success: true };
+}
