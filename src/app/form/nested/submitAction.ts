@@ -1,6 +1,7 @@
 "use server";
 
 import * as qs from "qs";
+import * as bodyParser from "body-parser";
 import { parseFormData } from "parse-nested-form-data";
 import z from "@/lib/zod";
 
@@ -27,14 +28,17 @@ export async function parsedQs(formData: FormData) {
     }
     return params.toString();
   };
-
+  console.log(formDataToQueryString(formData));
   const data = qs.parse(formDataToQueryString(formData));
+  console.log(Object.fromEntries(formData.entries()));
+  console.log(JSON.stringify(data));
   const result = schema.safeParse(data);
   console.log(result);
 }
 
 export async function parseNestedFormData(formData: FormData) {
   const data = parseFormData(formData);
+  console.log(data);
   const result = schema.safeParse(data);
   console.log(result);
 }
