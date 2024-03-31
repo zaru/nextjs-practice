@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { debounce } from "@/app/incremental-search/lib/utils";
 
 export function SearchInput() {
   const ref = useRef<HTMLInputElement>(null);
@@ -17,6 +18,16 @@ export function SearchInput() {
     };
   }, []);
 
+  const debouncedSearch = debounce(async (form: HTMLFormElement) => {
+    form.requestSubmit();
+  }, 100);
+
+  const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const form = e.currentTarget.form;
+    if (!form) return;
+    debouncedSearch(form);
+  };
+
   return (
     <div>
       <label
@@ -31,6 +42,7 @@ export function SearchInput() {
         </div>
         <input
           ref={ref}
+          onChange={handleChange}
           type="text"
           name="search"
           id="search"
