@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { SuccessMessage } from "./_components/SuccessMessage";
+import { List } from "@/app/modal-form-with-confirm/_components/List";
 
 interface Props {
   searchParams: {
@@ -19,6 +20,10 @@ export default function Page(props: Props) {
           新規登録
         </Link>
       </p>
+      <div>
+        <h2>登録済みデータ</h2>
+        <List />
+      </div>
     </div>
   );
 }
