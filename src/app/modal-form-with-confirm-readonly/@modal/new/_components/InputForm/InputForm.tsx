@@ -3,28 +3,27 @@
 import { CancelButton } from "../CancelButton";
 import { SubmitButton } from "../SubmitButton";
 import { InputField } from "./InputField";
-import { FormResultType, submit } from "../../_commands/form";
-import { EditButton } from "@/app/modal-form-with-confirm-readonly/@modal/new/_components/EditButton";
+import { confirm, submit } from "../../_commands/form";
+import { EditButton } from "../EditButton";
 import { useEffect, useState } from "react";
+import { useFormState } from "react-dom";
 
-interface Props {
-  dispatch: (payload: FormData) => void;
-  result: FormResultType;
-}
+interface Props {}
 export function InputForm(props: Props) {
+  const [result, validate] = useFormState(confirm, null);
   const [edit, setEdit] = useState(true);
 
   useEffect(() => {
-    if (props.result?.valid) {
+    if (result?.valid) {
       setEdit(false);
     }
-  }, [props.result]);
+  }, [result]);
 
-  const errors = props.result?.valid === false ? props.result.errors : {};
-  const formData = props.result?.valid ? props.result.form : null;
+  const errors = result?.valid === false ? result.errors : {};
+  const formData = result?.valid ? result.form : null;
 
   return (
-    <form action={edit ? props.dispatch : submit}>
+    <form action={edit ? validate : submit}>
       <div className="mt-4">
         <InputField
           label="名前"
