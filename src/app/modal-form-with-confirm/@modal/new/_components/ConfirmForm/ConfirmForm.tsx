@@ -1,12 +1,13 @@
 "use client";
 
-import { CancelButton } from "../CancelButton";
 import { SubmitButton } from "../SubmitButton";
 import { FormResultType, submit } from "../../_commands/form";
 import { ConfirmField } from "./ConfirmField";
+import { EditButton } from "../EditButton";
 
 interface Props {
   result: FormResultType;
+  setEdit: (edit: boolean) => void;
 }
 
 export function ConfirmForm(props: Props) {
@@ -31,7 +32,7 @@ export function ConfirmForm(props: Props) {
         />
       </div>
       <div className="mt-4 flex gap-4">
-        <CancelButton />
+        <EditButton onClick={() => props.setEdit(true)} />
         <SubmitButton>送信する</SubmitButton>
       </div>
     </form>
